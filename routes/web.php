@@ -19,3 +19,5 @@ Route::get('/', function () {
 });
 
 Route::get('/user-account/list', [AccountController::class, 'userAccountList'])->name('userAccountList');
+Route::post('/user/make-transaction', [AccountController::class, 'makeTransaction'])->name('user.makeTransaction');
+Route::get('/user/transactions', [AccountController::class, 'userTransaction'])->name('user.transactions');

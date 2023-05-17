@@ -33,7 +33,7 @@
                                             <td>{{$account->name}}</td>
                                             <td>{{$account->balance}}</td>
                                             <td>
-                                                <button  data-bs-toggle="modal" data-bs-target="#exampleModalCenter{{$account->id}}" class="btn btn-primary btn-sm" type="button">Transaction</button>
+                                                <button  data-bs-toggle="modal" data-bs-target="#exampleModalCenter{{$account->id}}" class="btn btn-primary btn-sm" type="button">Make Transaction</button>
                                             </td>
                                         </tr>
 
@@ -48,39 +48,44 @@
                         </button>
                       </div>
                       <div class="modal-body">
-                        <form action="" method="POST">
+                        <form action="{{ route('user.makeTransaction') }}" method="POST">
                             @csrf
-
+                                <input type="hidden" name="account_id" value="{{$account->id}}">
                             <div class="mb-3">
                               <label for="exampleFormControlInput1" class="form-label">Name</label>
-                              <input type="email" class="form-control" id="exampleFormControlInput1" value="{{$account->name}}" disabled>
+                              <input type="text" class="form-control" id="exampleFormControlInput1" value="{{$account->name}}" disabled>
                             </div>
                             <div class="mb-3">
                               <label for="exampleFormControlInput1" class="form-label">Amount</label>
-                              <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Enter amount">
+                              <input type="number" min="1" name="amount" class="form-control" id="exampleFormControlInput1" placeholder="Enter amount" required>
                             </div>
                             <div class="mb-3">
                               <label for="exampleFormControlInput1" class="form-label">Acount Type</label>
-                              <select class="form-select" aria-label="Default select example">
-                                  <option selected>-select type-</option>
-                                  <option value="1">General</option>
-                                  <option value="2">Savings</option>
-                                  <option value="3">Two Type</option>
-                                  <option value="4">Three Type</option>
+                              <select class="form-select" name="type" aria-label="Default select example" required>
+                                   
+                                  <option value="">-select type-</option>
+                                  <option value="General">General</option>
+                                  <option value="Savings">Savings</option>
+                                  <option value="Two Type">Two Type</option>
+                                  <option value="Three Type">Three Type</option>
                                 </select>
                             </div>
                             <div class="mb-3">
                               <label for="exampleFormControlInput1" class="form-label">Date</label>
-                              <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="{{ date('d-m-Y') }}" disabled>
+                              <input type="text" class="form-control" name="date" id="exampleFormControlInput1" value="{{ date('d-m-Y') }}" readonly>
                             </div>
 
 
-                        </form>
+                        
                       </div>
+
+
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
                       </div>
+
+                      </form>
                     </div>
                   </div>
                 </div>
