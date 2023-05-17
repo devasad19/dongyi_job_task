@@ -3,8 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Account;
 
-class AcountSeeder extends Seeder
+class AccountSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,7 +14,7 @@ class AcountSeeder extends Seeder
      */
     public function run()
     {
-        User::factory()
+        Account::factory()
             ->count(10)
             ->create();
     }

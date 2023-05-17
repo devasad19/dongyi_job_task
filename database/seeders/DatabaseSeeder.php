@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Database\Seeders\AccountSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,7 +16,7 @@ class DatabaseSeeder extends Seeder
     {
 
         $this->call([
-            AccountSeer
+            AccountSeeder::class
         ]);
         // \App\Models\User::factory(10)->create();
     }

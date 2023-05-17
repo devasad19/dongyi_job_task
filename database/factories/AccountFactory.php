@@ -3,9 +3,13 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Account;
 
 class AccountFactory extends Factory
 {
+
+    protected $model = Account::class;
+
     /**
      * Define the model's default state.
      *
@@ -14,7 +18,8 @@ class AccountFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->name(),
+            'balance' => rand(1000, 10000),
         ];
     }
 }
